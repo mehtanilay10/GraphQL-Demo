@@ -1,0 +1,104 @@
+Session - 01
+##################################################################
+
+ - GraphQL official site
+https://graphql.org/
+
+ - Companies using GraphQL 
+https://landscape.graphql.org/category=graph-ql-adopter&format=card-mode&grouping=category
+
+ - Official GraphQL Docs
+https://graphql.org/learn/
+
+- GraphQL Specifications
+http://spec.graphql.org/draft/
+
+ - Supported languages/frameworks for GraphQL
+https://graphql.org/code/
+
+ - GitHub Repo (containing codint, presentation, and all queries)
+https://github.com/mehtanilay10/GraphQL-Demo
+
+
+
+
+
+Session - 04
+##################################################################
+ - GitHub API Explorer
+https://developer.github.com/v4/explorer/
+
+ - GitHub GraphQL API Explorer
+https://developer.github.com/v4/
+
+
+
+
+
+Session - 18
+##################################################################
+- Validation Error 
+https://github.com/graphql/graphql-js/tree/master/src/validation/rules
+
+
+
+
+
+Session - 34
+##################################################################
+- ASP.Net Core 3 Identity & JWT Setup
+https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-API
+
+
+
+
+
+Follow & Support us
+##################################################################
+ - YouTube Channel
+http://www.youtube.com/c/TutorialsTeam
+
+ - Facebook Page
+https://www.facebook.com/TutorialsTeamOfficial/
+
+ - Official Site
+http://www.MNilay.com/TutorialsTeam/
+
+ - My Personal Blog
+http://www.MNilay.com/blog/
+
+ - Offers on other Udemy courses
+http://www.MNilay.com/Offers/
+
+
+
+
+
+Other courses by TutorialsTeam
+##################################################################
+ - Using ASP.Net Blazor for Absolute Beginners
+https://www.udemy.com/course/using-aspnet-blazor-for-absolute-beginners/
+
+ - Create custom Alexa skill using AWS Lambda function
+https://www.udemy.com/course/create-custom-alexa-skill-using-aws-lambda-function/
+
+ - Using Microsoft Bot Framework v3, LUIS, Cognitive ServicesMicrosoft Bot Framework
+https://www.udemy.com/course/using-microsoft-bot-framework-luis-and-cognitive-services/
+
+ - Create Chatbots using Dialogflow(API.AI) & deploy on GCloud 
+https://www.udemy.com/create-chatbots-using-apiai-and-deploy-on-google-cloud/
+
+ - Learn Entity Framework Core 2.0 (EFC2) using ASP.Net Core 
+https://www.udemy.com/learn-entity-framework-core-2-efc2-using-aspnet-core/
+
+ - Learn ASP.Net Web API 2 for Absolute Beginner 
+https://www.udemy.com/learn-aspnet-web-api-2-for-absolute-beginner/
+
+ - Learn Apache Cordova using Visual Studio 2015 & Command line 
+https://www.udemy.com/learn-how-to-create-hybrid-app-using-apache-cordova-using-visual-stud/
+
+ - Learn JSON and JSON Schema for Absolute Beginners 
+https://www.udemy.com/learn-json-and-json-schema-for-absolute-beginners/
+ 
+ - [TEST] .Net Interview Questions for Preparation (300+ que) 
+https://www.udemy.com/dotnet-interview-questions-for-preparation-300-questions/

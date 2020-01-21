@@ -1,0 +1,655 @@
+#################################################################
+#                        Session - 4
+#################################################################
+
+{
+  viewer{
+    id
+    name
+    login
+    url
+  }
+}
+
+#################################################################
+
+query getDetails{
+  viewer {
+    id
+    name
+    login
+    url
+  }
+}
+
+query getDetailsWithStatus{
+  viewer {
+    id
+    name
+    login
+    url
+    location
+    bio
+    status {
+      emoji
+      message
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 5
+#################################################################
+
+query {
+  alex:user(login:"alex"){
+    id
+    name
+    url
+    bio
+  }
+  
+  user(login:"mehtanilay10"){
+    user_id:id
+    name
+    url
+    bio
+  }
+}
+
+
+
+#################################################################
+#                        Session - 6
+#################################################################
+
+query {
+  alex: user(login: "alex") {
+    ...userFields
+  }
+
+  user(login: "mehtanilay10") {
+    ...userFields
+    location
+  }
+}
+
+fragment userFields on User {
+  userId: id
+  name
+  url
+  bio
+}
+
+
+
+#################################################################
+#                        Session - 7
+#################################################################
+query {
+  user(login: "mehtanilay10") {
+    ... on Actor{
+      login
+      url
+    }
+    ... on ProfileOwner {
+      id
+      name
+    }
+    bio
+  }
+}
+
+
+
+#################################################################
+#                        Session - 8
+#################################################################
+
+query($loginName: String = "mehtanilay10") {
+  user(login: $loginName) {
+    id
+    name
+    login
+    url
+    location
+    bio
+  }
+}
+
+{
+  "loginName": "andrew"
+}
+
+
+
+#################################################################
+#                        Session - 9
+#################################################################
+
+query($loginName: String = "mehtanilay10", $repoName: String!) {
+  user(login: $loginName) {
+    ...userFields
+  }
+}
+
+fragment userFields on User {
+  id
+  name
+  url
+  bio
+  repository(name: $repoName) {
+    name
+    url
+  }
+}
+
+{
+  "loginName": "mehtanilay10",
+  "repoName": "Entity-Framework-Core-Demo"
+}
+
+
+
+#################################################################
+#                        Session - 10
+#################################################################
+
+query ($loadStatus: Boolean!){
+  viewer {
+    id
+    name
+    login
+    url
+    location
+    bio @skip(if: $loadStatus)
+    status @include(if: $loadStatus) {
+      emoji
+      message
+    }
+  }
+}
+
+{
+  "loadStatus": false
+}
+
+
+
+#################################################################
+#                        Session - 11
+#################################################################
+
+query ($loginName: String = "mehtanilay10") {
+  user(login: $loginName) {
+    id
+    name
+    login
+    url
+    location
+    bio
+    repositories(first: 3){
+      totalCount
+      pageInfo{
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges{
+        cursor
+        node{
+          name
+          url
+        }
+      }
+    }
+  }
+}
+
+#################################################################
+
+query ($loginName: String = "mehtanilay10") {
+  user(login: $loginName) {
+    id
+    name
+    login
+    url
+    location
+    bio
+    repositories(last: 3, before: "Y3Vyc29yOnYyOpHODOWZzQ==", orderBy:{
+      field:NAME,
+      direction:ASC
+    }){
+      totalCount
+      pageInfo{
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+      edges{
+        cursor
+        node{
+          name
+          url
+        }
+      }
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 16
+#################################################################
+
+{
+  __type(name: "User") {
+    name
+    description
+    interfaces {
+      name
+    }
+    fields {
+      name
+      description
+      args{
+        name
+      }
+      type{
+        kind
+        name
+        ofType {
+          name
+        }
+      }
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 17
+#################################################################
+{
+  __schema {
+    queryType {
+      fields {
+        name
+      }
+    },
+    mutationType{
+      fields{
+        name
+      }
+    }
+  }
+}
+
+#################################################################
+
+{
+  viewer{
+    __typename
+    status{
+      message
+      __typename
+    }
+  }
+}
+
+#################################################################
+#                        Session - 19
+#################################################################
+
+mutation ($updatedStatus: ChangeUserStatusInput!, $updatedRepo:UpdateRepositoryInput!) {
+  changeUserStatus(input: $updatedStatus) {
+    status {
+      emoji
+      message
+    }
+  }
+  updateRepository(input: $updatedRepo){
+    repository{
+      hasWikiEnabled
+    }
+  }
+}
+
+{
+    "updatedStatus": {
+        "message": "Hello! This text set from GraphQL."
+    },
+    "updatedRepo": {
+        "repositoryId": "MDEwOlJlcG9zaXRvcnkxNDUwMTM4MDc=",
+        "hasWikiEnabled": false
+    }
+}
+
+#################################################################
+#                        Session - 20
+#################################################################
+
+subscription{
+  orderEvent{
+    id
+    name
+    orderId
+  }
+}
+
+#################################################################
+
+mutation ($order:OrderInput!) {
+  createOrder(order: $order){
+    id
+    name
+    status
+  }
+}
+
+{
+    "order": {
+    "name": "My Ordsfsffthkjkhfher",
+    "description": "2019-10-06T01:20:26.9078265Z",
+    "customerId": 1,
+    "created": "2019-10-06T01:20:26.9078265Z"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################################
+#                        Session - 24
+#################################################################
+
+{
+  newOrders{
+    id
+    addressLine1
+    amount
+    mobileNo
+  }
+}
+
+{
+  newOrders{
+    id
+    date
+    amount
+    mobileNo
+  }
+}
+
+
+
+#################################################################
+#                        Session - 25
+#################################################################
+
+{
+  orderDetails(id: 1){
+    id
+    date
+    amount
+    mobileNo
+  }
+}
+
+
+
+#################################################################
+#                        Session - 26
+#################################################################
+
+{
+  orderDetails(id: 2){
+    id
+    date
+    amount
+    mobileNo
+    pizzaDetails{
+      name
+      price
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 28
+#################################################################
+
+mutation($orderDetails: OrderDetailsInputType!) {
+  createOrder(orderDetails: $orderDetails) {
+    id
+    orderStatus
+    pizzaDetails {
+      id
+      name
+    }
+  }
+}
+
+
+{
+  "orderDetails": {
+    "addressLine1": "First Address Line",
+    "addressLine2": "Second Address Line",
+    "mobileNo": "9876543210",
+    "amount": 150,
+    "pizzaDetails": [{
+      "name": "Pizza Type1",
+      "price": 50,
+      "size": 7,
+      "toppings": "NONE"
+    }, {
+      "name": "Pizza Type2",
+      "price": 100,
+      "size": 11,
+      "toppings": "ONIONS"
+    }]
+  }
+}
+
+#################################################################
+#                        Session - 29
+#################################################################
+
+mutation {
+  updateStatus(id: 1, status: InKitchen) {
+    id
+    orderStatus
+  }
+}
+
+#################################################################
+
+mutation{
+  deletePizzaDetails (pizzaDetailsId:2){
+    pizzaDetails{
+      id
+      name
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 30
+#################################################################
+
+subscription{
+  orderCreated{
+    orderId
+  }
+}
+
+mutation($orderDetails: OrderDetailsInputType!) {
+  createOrder(orderDetails: $orderDetails) {
+    id
+    orderStatus
+    pizzaDetails {
+      id
+      name
+    }
+  }
+}
+
+{
+  "orderDetails": {
+    "addressLine1": "First Address Line",
+    "addressLine2": "Second Address Line",
+    "mobileNo": "9876543210",
+    "amount": 150,
+    "pizzaDetails": [{
+      "name": "Pizza Type1",
+      "price": 50,
+      "size": 7,
+      "toppings": "NONE"
+    }, {
+      "name": "Pizza Type2",
+      "price": 100,
+      "size": 11,
+      "toppings": "ONIONS"
+    }]
+  }
+}
+
+#################################################################
+#                        Session - 31
+#################################################################
+
+subscription{
+  statusUpdate(status: InKitchen){
+    orderId
+  }
+}
+
+mutation {
+  updateStatus(id: 1, status: InKitchen) {
+    id
+    orderStatus
+  }
+}
+
+
+
+#################################################################
+#                        Session - 32
+#################################################################
+
+query {
+  completedOrders(first: 3, after:"JgAAAA==") {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        id
+        addressLine1
+        amount
+      }
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 33
+#################################################################
+
+query {
+  completedOrders(orderBy: { field: AMOUNT, direction: DESC }) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      endCursor
+    }
+    totalCount
+    edges {
+      node {
+        id
+        addressLine1
+        amount
+      }
+    }
+  }
+}
+
+
+
+#################################################################
+#                        Session - 36
+#################################################################
+
+{
+  newOrders{
+    id
+    addressLine1
+  }
+}
+
+{
+  "authorization": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4MTljYTFiODk3ZjQ0OGIwODIyNDUzZDFiMzUzODk4ZiIsInN1YiI6IlJlc3RhdXJhbnRVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJjZTFkNDlmMi1mMjcxLTQ0MmQtYjQxZS0zZTQ0YTU2NTM2NmIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZXN0YXVyYW50IiwiZXhwIjoxNTc3NjczODE0LCJpc3MiOiJZb3VySXNzdWVyTmFtZSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQzMzcifQ.xqRUd7u1fSk-05HNZEs6SJFV4YS-NO2t3YTgj1xOnA4"
+}
+
+
+
+#################################################################
+#                        Session - 37
+#################################################################
+
+{
+  exceptionDemo{
+    id
+    name
+  }
+}
+
+
+
+#################################################################
+#                        Session - 38
+#################################################################
+
+{
+  orderDetails(id: 1){
+    id
+    addressLine1
+    pizzaDetails{
+      id
+      name
+    }
+  }
+}
